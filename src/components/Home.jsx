@@ -1,38 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from './Footer';
 import EventCard from './EventCard';
+import getAllLoctions from './api/getAllLocation';
 
-const name = [
-  {
-    country_name : "USA"
-  },
-  {
-    country_name : "Canada"
-  },
-  {
-    country_name : "Australia"
-  },
-  {
-    country_name : "Saudi Arabia"
-  },
-  {
-    country_name : "Alaska"
-  },
-  {
-    country_name : "Morocco"
-  },
-  {
-    country_name : "Qatar"
-  },
-  {
-    country_name : "Maldieves"
-  },
-  
-]
+
 
 
 
 const Home = () => {
+  const [event,setEvent]=useState([]);
+  // console.log(event.location)
+  const getLocation=async ()=>{
+    const res= await getAllLoctions();
+
+    setEvent(res.data.data);
+  }
+useEffect( ()=>{
+getLocation();
+
+},[]);
   return (
     <div>
   
@@ -42,10 +28,13 @@ const Home = () => {
 
     <div className='countrty_cards'>
  
-    {name.map(()=>
+    {event.map((event)=>
       <EventCard
-      country_name = {name.country_name}
+      location = {event.location}
+      eventImage = {event.image}
+
       />
+      // <h1>hello</h1>
       )}
     </div>
 
