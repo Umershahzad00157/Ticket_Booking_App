@@ -1,6 +1,12 @@
 import React from 'react'
 
-const EventCard = (props) => {
+const EventCard = ({location, eventImage}) => {
+
+  const goToEvent = ()=>{
+    
+  }
+
+
   return (
     <div>
       
@@ -8,17 +14,15 @@ const EventCard = (props) => {
     
     <div className="card-client">
     <div className="user-picture">
-        
+        <img src={eventImage}/>
     </div>
-    <p className="name-client"> {props.country_name}
-        <span>Collection of events
-        </span>
+    <p className="name-client"> {location}
     </p>
     <div className="social-media">
         <a href="#">
             
             
-            <button className='card_btn'>See</button>
+            <button onClick={goToEvent()} className='card_btn'>See</button>
         </a>
         
     </div>
